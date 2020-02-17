@@ -41,5 +41,5 @@ jobs:
 
     - name: Set slack status color to good based on status
       run: echo "::set-env name=test::false"
-      if: env.test == "false"
+      if: env.test == 'false'
     - run: echo "got here"
