@@ -24,6 +24,7 @@ jobs:
   build:
     runs-on: ubuntu-16.04
     steps:
+    - name: test
     - run: echo "::set-env name=test::true"
 
     - name: test true
