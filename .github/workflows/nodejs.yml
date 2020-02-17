@@ -25,14 +25,17 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
     - uses: actions/checkout@v2
+
     - name: Use Node.js 12
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
 
     - name: Set slack status color to good based on status
-    - run: echo "::set-env name=test::true"
+      run: echo "::set-env name=test::true"
+
       if: env.test == 'true'
     - run: echo "got here (true)"
+
       if: env.test == 'false'
     - run: echo "got here (false)"
