@@ -38,7 +38,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: echo "::set-env name=test::false"
+
     - name: Set slack status color to good based on status
+      run: echo "::set-env name=test::false"
       if: env.test == "false"
     - run: echo "got here"
