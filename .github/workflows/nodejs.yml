@@ -20,6 +20,12 @@ env:
     Succeeded: ":heavy_check_mark: Succeeded"
     Failed: ":heavy_multiplication_x: Failed"
     testValue: "test value"
+    SLACK_ICON: ":octocat:"
+    SLACK_CHANNEL: "#test-channel"
+    SLACK_USERNAME: "Github Actions"
+    SLACK_COLOR: "#de4e2b"
+    SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    SLACK_TITLE: ":heavy_multiplication_x: Failed"
 
 jobs:
   build:
@@ -40,3 +46,8 @@ jobs:
     - name: test false
       if: env.test == false
       run: echo "got here (false)"
+
+    - name: Slack Notification
+      uses: PaulSearcy/action-status-slack@0.2
+      env:
+        SLACK_MESSAGE: 'Post Content test'
