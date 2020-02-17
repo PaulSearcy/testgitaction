@@ -19,6 +19,7 @@ env:
     cache-name: "node-modules"
     Succeeded: ":heavy_check_mark: Succeeded"
     Failed: ":heavy_multiplication_x: Failed"
+    testValue: "test value"
 
 jobs:
   build:
@@ -26,6 +27,7 @@ jobs:
     steps:
     - name: test
       run: echo "::set-env name=test::true"
+      run: echo "::set-env name=testValue::${{ Succeeded }}"
 
     - name: printenv
       run: printenv
