@@ -48,6 +48,6 @@ jobs:
       run: echo "got here (false)"
 
     - name: Slack Notification
-      uses: PaulSearcy/action-status-slack@0.2
+      uses: PaulSearcy/action-status-slack@0.3
       env:
         SLACK_MESSAGE: 'Post Content test'
