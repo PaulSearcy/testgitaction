@@ -31,6 +31,8 @@ jobs:
         node-version: 12.x
 
     - name: Set slack status color to good based on status
-      run: echo "::set-env name=test::false"
+      run: echo "::set-env name=test::true"
+      if: env.test == 'true'
+    - run: echo "got here (true)"
       if: env.test == 'false'
-    - run: echo "got here"
+    - run: echo "got here (false)"
