@@ -28,11 +28,9 @@ jobs:
       run: echo "::set-env name=test::true"
 
     - name: test true
-      run: echo "got here (true)"
       if: env.test == true
       run: echo "got here (true)"
 
     - name: test false
-      run: echo "got here (true)"
       if: env.test == false
       run: echo "got here (false)"
