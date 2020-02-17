@@ -1,0 +1,44 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - master
+      - github-action-test
+  pull_request:
+    branches:
+      - master
+      - github-action-test
+
+env:
+    CI: true
+    TZ: "America/Chicago"
+    API_URL: "https://api-test.speechanddebate.org/v2/"
+    API_HOST: "api-test.speechanddebate.org"
+    test: "false"
+    cache-name: "node-modules"
+    Succeeded: ":heavy_check_mark: Succeeded"
+    Failed: ":heavy_multiplication_x: Failed"
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache Node Modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    - name: Use Node.js 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: echo "::set-env name=test::false"
+    - name: Set slack status color to good based on status
+      if: env.test == "false"
+    - run: echo "got here"
