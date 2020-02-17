@@ -27,6 +27,9 @@ jobs:
     - name: test
       run: echo "::set-env name=test::true"
 
+    - name: printenv
+      run: printenv
+
     - name: test true
       if: env.test == true
       run: echo "got here (true)"
